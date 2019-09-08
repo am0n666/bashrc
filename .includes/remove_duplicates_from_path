@@ -1,0 +1,7 @@
+remove_duplicates_from_path() {
+	PATH_NO_DUPLICATES=$(echo -n $PATH | awk -v RS=: -v ORS=: '!x[$0]++' | sed "s/\(.*\).\{1\}/\1/")
+#	PATH_NO_DUPLICATES=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
+	export PATH=$PATH_NO_DUPLICATES
+}
+
+remove_duplicates_from_path
